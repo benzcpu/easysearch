@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EasySearch</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+
+<input id=search />
+<div id="data">
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>After</li>
+        <li>Benz</li>
+        <li>Category</li>
+    </ul>
+</div>
+
+
+</body>
+
+    <script>
+        $(document).on('keyup','#search',function(){
+        filter_popdialog($(this).val(),'#data');
+        })
+        function filter_popdialog(value, inputID) {
+            var input, filter, ul, li, a, i, txtValue;
+            filter = value.toUpperCase();
+            li = $(inputID + " ul li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    //$(li[i]).fadeIn();
+                    li[i].style.display = "";
+                } else {
+                    //$(li[i]).fadeIn();
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</html>
